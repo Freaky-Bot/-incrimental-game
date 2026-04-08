@@ -1,0 +1,60 @@
+#!/bin/sh
+# Pre-commit hook: require version bump and patch note update when code changes are staged.
+# Place this repository-wide by setting: git config core.hooksPath .githooks
+
+set -e
+
+STAGED=$(git diff --cached --name-only --diff-filter=ACM)
+
+# If nothing is staged, allow commit
+if [ -z "$STAGED" ]; then
+  exit 0
+fi
+
+# Detect if code/dist files have changed (adjust patterns as needed)
+echo "$STAGED" | grep -E '^(dist/|assets/|index.html|src/|assets/)' >/dev/null 2>&1
+CODE_CHANGED=$?
+
+if [ "$CODE_CHANGED" -eq 0 ]; then
+  # Ensure version.txt is staged
+  echo "$STAGED" | grep -q '^version.txt$' || {
+    echo "ERROR: You changed code but did not stage 'version.txt'." >&2
+    echo "Please run: powershell -ExecutionPolicy Bypass -File bump_version.ps1" >&2
+    echo "Then stage 'version.txt' and patch notes in 'dist/index.html'." >&2
+    exit 1
+  }
+
+  # Read version from working tree
+  if [ -f version.txt ]; then
+    VERSION=$(cat version.txt)
+  else
+    echo "ERROR: version.txt is missing." >&2
+    exit 1
+  fi
+
+  if [ -z "$VERSION" ]; then
+    echo "ERROR: version.txt is empty; please bump the version." >&2
+    exit 1
+  fi
+
+  # Get the staged version of dist/index.html if it was staged, otherwise the working copy
+  if echo "$STAGED" | grep -q '^dist/index.html$'; then
+    # Use git show to read the staged version
+    if git show :dist/index.html >/dev/null 2>&1; then
+      CONTENT=$(git show :dist/index.html)
+    else
+      CONTENT=$(cat dist/index.html 2>/dev/null || echo "")
+    fi
+  else
+    CONTENT=$(cat dist/index.html 2>/dev/null || echo "")
+  fi
+
+  echo "$CONTENT" | grep -q "$VERSION"
+  if [ $? -ne 0 ]; then
+    echo "ERROR: Patch notes in dist/index.html do not contain version $VERSION." >&2
+    echo "Please add an entry for $VERSION to the patch notes and stage the change before committing." >&2
+    exit 1
+  fi
+fi
+
+exit 0
