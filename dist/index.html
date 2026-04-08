@@ -4,21 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Incremental Game</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div id="start-menu" class="overlay">
         <div class="start-content">
-            <h1 class="dream-title">THE INCREMENTAL GAME</h1>
-            <div class="patchnotes">
-                <h2>Patch Notes</h2>
-                <ul>
-                    <li>v0.0.2 - Added start menu and button</li>
-                    <li>v0.0.1 - Initial release: 3D scene and incremental logic</li>
-                </ul>
+            <div class="panel">
+                <h1 class="dream-title">THE INCREMENTAL GAME</h1>
+                <p class="subtitle">A 3D Open World Adventure</p>
+
+                <button id="start-btn" class="start-btn">START</button>
+
+                <div class="patchnotes">
+                    <h2>Patch Notes</h2>
+                    <div class="patchnotes-list">
+                        <ul>
+                            <li>v0.0.6 - Modern purple beveled UI, black background</li>
+                            <li>v0.0.5 - Center main game content after start</li>
+                            <li>v0.0.4 - Center start menu overlay content</li>
+                            <li>v0.0.3 - Add patch notes and version to start menu</li>
+                            <li>v0.0.2 - Added start menu and button</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="version">Version: <span id="game-version">0.0.6</span></div>
             </div>
-            <div class="version">Version: <span id="game-version">0.0.2</span></div>
-            <button id="start-btn" class="start-btn">Start</button>
         </div>
     </div>
     <div id="main-content" style="display:none;">
