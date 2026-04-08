@@ -58,6 +58,36 @@ button:hover {
     color: #fff;
     text-shadow: 0 2px 24px #00ffe7, 0 1px 0 #232946;
 }
+.patchnotes {
+    background: rgba(35, 41, 70, 0.85);
+    border-radius: 12px;
+    padding: 1em 2em;
+    margin: 1.5em auto 1em auto;
+    max-width: 350px;
+    color: #b8c1ec;
+    box-shadow: 0 2px 16px #23294644;
+}
+.patchnotes h2 {
+    margin: 0 0 0.5em 0;
+    font-size: 1.3em;
+    color: #00ffe7;
+    letter-spacing: 0.05em;
+}
+.patchnotes ul {
+    list-style: disc inside;
+    padding: 0;
+    margin: 0;
+    font-size: 1em;
+}
+.patchnotes li {
+    margin-bottom: 0.3em;
+}
+.version {
+    margin: 1em 0 2em 0;
+    font-size: 1.1em;
+    color: #00ffe7;
+    font-weight: bold;
+}
 .dream-quote {
     font-size: 1.2em;
     color: #b8c1ec;
