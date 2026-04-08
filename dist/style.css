@@ -1,14 +1,12 @@
 body {
-    font-family: Arial, sans-serif;
-    background: #181818;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: linear-gradient(135deg, #181818 0%, #232946 100%);
     color: #fff;
     margin: 0;
     padding: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     min-height: 100vh;
 }
+#game-container {
 #game-container {
     width: 600px;
     height: 400px;
@@ -16,6 +14,77 @@ body {
     margin: 20px 0;
     border-radius: 10px;
     overflow: hidden;
+}
+#ui {
+    margin-top: 20px;
+}
+button {
+    padding: 10px 20px;
+    font-size: 1.2em;
+    border: none;
+    border-radius: 5px;
+    background: #4caf50;
+    color: #fff;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+}
+button:hover {
+    background: #388e3c;
+    transform: scale(1.05);
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(120deg, #232946 60%, #181818 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    flex-direction: column;
+}
+.start-content {
+    text-align: center;
+    animation: fadeIn 1.2s cubic-bezier(.4,0,.2,1);
+}
+.dream-title {
+    font-size: 2.8em;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.5em;
+    font-weight: 700;
+    color: #fff;
+    text-shadow: 0 2px 24px #00ffe7, 0 1px 0 #232946;
+}
+.dream-quote {
+    font-size: 1.2em;
+    color: #b8c1ec;
+    margin-bottom: 2em;
+    font-style: italic;
+}
+.start-btn {
+    padding: 18px 48px;
+    font-size: 1.5em;
+    border-radius: 40px;
+    background: linear-gradient(90deg, #00ffe7 0%, #232946 100%);
+    color: #232946;
+    font-weight: bold;
+    border: none;
+    box-shadow: 0 4px 32px #00ffe7aa;
+    cursor: pointer;
+    letter-spacing: 0.08em;
+    transition: background 0.3s, color 0.3s, transform 0.2s;
+}
+.start-btn:hover {
+    background: linear-gradient(90deg, #232946 0%, #00ffe7 100%);
+    color: #fff;
+    transform: scale(1.08);
+}
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 #ui {
     margin-top: 20px;

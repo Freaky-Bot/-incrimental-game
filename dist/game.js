@@ -29,15 +29,26 @@ function animate() {
 
 // Incremental game logic
 let points = 0;
-const pointsSpan = document.getElementById('points');
-const incrementBtn = document.getElementById('increment-btn');
+let pointsSpan, incrementBtn;
 
-incrementBtn.addEventListener('click', () => {
-    points++;
-    pointsSpan.textContent = points;
-});
+function setupGameLogic() {
+    pointsSpan = document.getElementById('points');
+    incrementBtn = document.getElementById('increment-btn');
+    incrementBtn.addEventListener('click', () => {
+        points++;
+        pointsSpan.textContent = points;
+    });
+}
 
 window.onload = () => {
-    init3D();
-    animate();
+    const startBtn = document.getElementById('start-btn');
+    if (startBtn) {
+        startBtn.addEventListener('click', () => {
+            document.getElementById('start-menu').style.display = 'none';
+            document.getElementById('main-content').style.display = '';
+            init3D();
+            setupGameLogic();
+            animate();
+        });
+    }
 };

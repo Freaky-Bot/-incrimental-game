@@ -7,11 +7,20 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>The Incremental Game</h1>
-    <div id="game-container"></div>
-    <div id="ui">
-        <p>Points: <span id="points">0</span></p>
-        <button id="increment-btn">Increment</button>
+    <div id="start-menu" class="overlay">
+        <div class="start-content">
+            <h1 class="dream-title">THE INCREMENTAL GAME</h1>
+            <p class="dream-quote">I dwell in a dream, by a law of my own.<br>Peer through the shroud and begin your journey.</p>
+            <button id="start-btn" class="start-btn">Start</button>
+        </div>
+    </div>
+    <div id="main-content" style="display:none;">
+        <h1>The Incremental Game</h1>
+        <div id="game-container"></div>
+        <div id="ui">
+            <p>Points: <span id="points">0</span></p>
+            <button id="increment-btn">Increment</button>
+        </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/three@0.155.0/build/three.min.js"></script>
     <script src="game.js"></script>
